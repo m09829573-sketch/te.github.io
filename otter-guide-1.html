@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦦 수달 프리셋 가이드</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Nunito:wght@700;800;900&family=Gmarket+Sans:wght@300;500;700&display=swap');
+
+:root {
+  --bg:        #f5f0e8;
+  --bg2:       #ede7d9;
+  --bg3:       #faf7f2;
+  --card:      #ffffff;
+  --border:    #ddd6c8;
+  --border2:   #c8bfb0;
+  --text:      #2c2416;
+  --text2:     #6b5e4a;
+  --text3:     #9c8e7a;
+  --otter:     #7a4f2e;
+  --otter2:    #a0693e;
+  --water:     #4a90b8;
+  --water2:    #6aacce;
+  --water-bg:  #e8f4fb;
+  --mint:      #3aafa0;
+  --mint-bg:   #e6f7f5;
+  --gold:      #d4900a;
+  --gold-bg:   #fef5e0;
+  --coral:     #d45a40;
+  --coral-bg:  #fdeee9;
+  --lavender:  #7b68c8;
+  --lav-bg:    #f0eefb;
+  --green:     #4a9a6a;
+  --green-bg:  #eaf6f0;
+  --shadow:    0 2px 16px rgba(100,80,40,0.10);
+  --shadow2:   0 6px 32px rgba(100,80,40,0.14);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* === HEADER === */
+.hero {
+  background: linear-gradient(160deg, #fff8ee 0%, #fef3e2 50%, #e8f4fb 100%);
+  border-bottom: 2px solid var(--border);
+  padding: 56px 24px 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74,144,184,0.08), transparent 70%);
+  top: -100px; right: -100px;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,144,10,0.07), transparent 70%);
+  bottom: -80px; left: -80px;
+  pointer-events: none;
+}
+.hero-otter {
+  font-size: 72px;
+  display: block;
+  animation: bob 3.5s ease-in-out infinite;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+@keyframes bob {
+  0%,100% { transform: translateY(0) rotate(-4deg); }
+  50%      { transform: translateY(-10px) rotate(4deg); }
+}
+.hero h1 {
+  font-family: 'Nunito', 'Noto Sans KR', sans-serif;
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  font-weight: 900;
+  color: var(--otter);
+  letter-spacing: -1.5px;
+  position: relative; z-index: 1;
+  margin-bottom: 8px;
+}
+.hero h1 span { color: var(--water); }
+.hero-desc {
+  color: var(--text2);
+  font-size: 0.95rem;
+  max-width: 500px;
+  margin: 0 auto 20px;
+  position: relative; z-index: 1;
+}
+.otter-bubble {
+  display: inline-block;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 12px 22px;
+  font-size: 0.88rem;
+  color: var(--otter);
+  font-weight: 700;
+  box-shadow: var(--shadow);
+  position: relative; z-index: 1;
+}
+.otter-bubble::before {
+  content: '🦦 ';
+}
+
+/* === LAYOUT === */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+/* === SECTION TITLE === */
+.sec-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 52px 0 18px;
+}
+.sec-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.sec-title h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+.sec-title p {
+  font-size: 0.82rem;
+  color: var(--text3);
+  margin-top: 1px;
+}
+.sec-line {
+  flex: 1;
+  height: 1.5px;
+  background: var(--border);
+  border-radius: 2px;
+}
+
+/* === OVERVIEW CARDS === */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+@media(max-width:640px){ .overview-grid { grid-template-columns: 1fr; } }
+.ov-card {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 22px 20px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.ov-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow2);
+}
+.ov-card .ic { font-size: 1.8rem; margin-bottom: 10px; display: block; }
+.ov-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.ov-card p  { font-size: 0.82rem; color: var(--text2); line-height: 1.65; }
+
+/* === PRINCIPLE BANNER === */
+.principle-box {
+  background: linear-gradient(135deg, #fff8ee, #fef3e2);
+  border: 2px solid #f0d080;
+  border-radius: 20px;
+  padding: 26px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.principle-box::after {
+  content: '🦦';
+  position: absolute;
+  right: 20px; bottom: -10px;
+  font-size: 80px;
+  opacity: 0.06;
+  transform: rotate(-20deg);
+}
+.principle-box h3 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.principle-box p {
+  font-size: 0.87rem;
+  color: var(--text2);
+  line-height: 1.8;
+}
+.principle-box .quote {
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.7);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.9rem;
+  color: var(--otter);
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* === FEATURE ACCORDION === */
+.feature-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.feat {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s;
+}
+.feat.open { border-color: var(--border2); }
+.feat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.feat-header:hover { background: var(--bg); }
+.feat-left {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.feat-badge {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+.feat-title { font-weight: 700; font-size: 0.97rem; color: var(--text); }
+.feat-hint  { font-size: 0.78rem; color: var(--text3); margin-top: 2px; }
+.feat-arrow {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--bg2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem;
+  color: var(--text3);
+  transition: transform 0.3s, background 0.2s;
+  flex-shrink: 0;
+}
+.feat.open .feat-arrow { transform: rotate(180deg); background: var(--border2); }
+
+.feat-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.feat-body.open { max-height: 2000px; }
+.feat-inner {
+  border-top: 1.5px solid var(--border);
+  padding: 20px 22px 22px;
+}
+
+/* === OPTION LIST === */
+.opt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 0;
+}
+.opt-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--bg3);
+  transition: border-color 0.15s, background 0.15s;
+}
+.opt-item:hover { border-color: var(--border2); background: #fff; }
+.opt-num {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  font-family: 'Nunito', sans-serif;
+}
+.opt-content {}
+.opt-label { font-size: 0.88rem; font-weight: 700; color: var(--text); }
+.opt-desc  { font-size: 0.8rem; color: var(--text2); line-height: 1.6; margin-top: 2px; }
+
+/* color themes for opt-num */
+.c-water  { background: var(--water-bg);  color: var(--water); }
+.c-mint   { background: var(--mint-bg);   color: var(--mint); }
+.c-gold   { background: var(--gold-bg);   color: var(--gold); }
+.c-coral  { background: var(--coral-bg);  color: var(--coral); }
+.c-lav    { background: var(--lav-bg);    color: var(--lavender); }
+.c-green  { background: var(--green-bg);  color: var(--green); }
+.c-otter  { background: #f5ede4;          color: var(--otter); }
+
+/* === TIP BOX === */
+.tip {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: var(--gold-bg);
+  border: 1.5px solid #f0d080;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: #7a5400;
+  line-height: 1.65;
+}
+.tip::before { content: '🦦'; font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+.info {
+  background: var(--water-bg);
+  border: 1.5px solid #b8dff0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: #2a5f80;
+  line-height: 1.7;
+}
+.info strong { color: var(--water); }
+
+/* === GENRE GRID === */
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+@media(max-width:480px){ .genre-grid { grid-template-columns: 1fr; } }
+.genre-card {
+  padding: 13px 15px;
+  border-radius: 12px;
+  border: 1.5px solid;
+}
+.genre-card .g-num { font-size: 0.72rem; font-weight: 800; margin-bottom: 3px; font-family: 'Nunito', sans-serif; }
+.genre-card .g-name { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
+.genre-card .g-desc { font-size: 0.78rem; line-height: 1.55; }
+
+.g-heal  { background:#edfdf9; border-color:#a0ddd4; }
+.g-heal  .g-num, .g-heal  .g-name { color: var(--mint); }
+.g-heal  .g-desc { color: #3a7a72; }
+
+.g-rpg   { background:var(--gold-bg); border-color:#f0d080; }
+.g-rpg   .g-num, .g-rpg   .g-name { color: var(--gold); }
+.g-rpg   .g-desc { color: #7a5400; }
+
+.g-rom   { background:#fff0f5; border-color:#f0b8cc; }
+.g-rom   .g-num, .g-rom   .g-name { color: #c04878; }
+.g-rom   .g-desc { color: #7a3050; }
+
+.g-har   { background:var(--lav-bg); border-color:#c0b4f0; }
+.g-har   .g-num, .g-har   .g-name { color: var(--lavender); }
+.g-har   .g-desc { color: #4a3a90; }
+
+.g-adu   { background:#fff0ee; border-color:#f0a090; }
+.g-adu   .g-num, .g-adu   .g-name { color: var(--coral); }
+.g-adu   .g-desc { color: #8a3020; }
+
+.g-siz   { background:var(--green-bg); border-color:#a0d8b8; }
+.g-siz   .g-num, .g-siz   .g-name { color: var(--green); }
+.g-siz   .g-desc { color: #2a6040; }
+
+.g-flt   { background:#f0f4ff; border-color:#b0bce8; }
+.g-flt   .g-num, .g-flt   .g-name { color: #4460c0; }
+.g-flt   .g-desc { color: #2a3a80; }
+
+.g-hor   { background:#f4f0f8; border-color:#c0b0d0; }
+.g-hor   .g-num, .g-hor   .g-name { color: #6a4880; }
+.g-hor   .g-desc { color: #4a2860; }
+
+/* === HOW-TO STEPS === */
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step  { display: flex; gap: 16px; position: relative; }
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 19px; top: 40px;
+  width: 2px;
+  height: calc(100% - 4px);
+  background: linear-gradient(180deg, var(--border2), var(--border));
+}
+.step-num {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--otter2), var(--otter));
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900; font-size: 0.9rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(160,105,62,0.3);
+  position: relative; z-index: 1;
+}
+.step-body  { padding: 8px 0 28px; }
+.step-title { font-weight: 700; font-size: 0.95rem; color: var(--text); margin-bottom: 5px; }
+.step-desc  { font-size: 0.83rem; color: var(--text2); line-height: 1.7; }
+.step-desc code {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: var(--otter);
+}
+
+/* === SPECIAL FEATURES === */
+.special-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media(max-width:480px){ .special-grid { grid-template-columns: 1fr; } }
+.sp-card {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 18px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.sp-card:hover { transform: translateY(-3px); box-shadow: var(--shadow2); }
+.sp-card .sp-icon { font-size: 1.6rem; margin-bottom: 10px; display: block; }
+.sp-card h3 { font-size: 0.93rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.sp-card p  { font-size: 0.8rem; color: var(--text2); line-height: 1.65; }
+.sp-tag {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: 1.5px solid;
+}
+
+/* footer */
+.footer {
+  text-align: center;
+  padding: 48px 20px 20px;
+  color: var(--text3);
+  font-size: 0.82rem;
+  line-height: 2;
+}
+.footer .f-otter { font-size: 2.5rem; display:block; margin-bottom:8px; animation: bob 4s ease-in-out infinite reverse; }
+.footer strong { color: var(--otter); }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-otter">🦦</span>
+  <h1>수달 프리셋<br><span>완전 정복 가이드</span></h1>
+  <p class="hero-desc">
+    처음 보면 복잡해 보이지만, 기능을 하나씩 알고 나면 진짜 쉬워!<br>
+    이 가이드 읽으면 바로 쓸 수 있어 🌊
+  </p>
+  <div class="otter-bubble">
+    대장! 같이 하나씩 살펴보자~ 물론 수달이 도와줄게!
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 이게 뭐야 -->
+  <div class="sec-title">
+    <div class="sec-icon" style="background:var(--gold-bg)">🎭</div>
+    <div>
+      <h2 style="color:var(--gold)">이게 뭐야?</h2>
+      <p>수달 프리셋 한눈에 보기</p>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="overview-grid">
+    <div class="ov-card">
+      <span class="ic">🧠</span>
+      <h3>AI 내러티브 엔진</h3>
+      <p>AI 롤플레이·소설 생성의 <strong>모든 동작 방식</strong>을 조율하는 설정 시스템이야. 어떤 시점으로, 어떤 문체로, 어떤 장르로 이야기를 써줄지 전부 내 마음대로!</p>
+    </div>
+    <div class="ov-card">
+      <span class="ic">🎛️</span>
+      <h3>숫자 하나로 조작</h3>
+      <p>모든 기능은 <strong>숫자 값만 바꾸면</strong> 켜지고 꺼져. 코딩 지식 없어도 OK! 0, 1, 2, 3... 숫자를 바꾸면 AI의 행동이 달라져.</p>
+    </div>
+    <div class="ov-card">
+      <span class="ic">🦦</span>
+      <h3>수달 도우미</h3>
+      <p>설정이 헷갈릴 때 <strong>수달 모드</strong>를 켜면 장난기 넘치는 수달 AI가 직접 도와줘! "대장~" 하고 반겨주는 친구야.</p>
+    </div>
+  </div>
+
+  <!-- 핵심 원칙 -->
+  <div class="sec-title" style="margin-top:48px">
+    <div class="sec-icon" style="background:var(--gold-bg)">⭐</div>
+    <div>
+      <h2 style="color:var(--gold)">수달 원칙</h2>
+      <p>이 프리셋의 가장 중요한 철학</p>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="principle-box">
+    <h3>👁️ "우리는 서로의 마음을 모른다"</h3>
+    <p>
+      수달 프리셋의 핵심 철학이야. AI는 다른 캐릭터의 내면을 <strong>함부로 단정 짓지 않아.</strong><br>
+      대신 <strong>표정, 몸짓, 침묵, 목소리 떨림</strong> 같은 외적 신호로만 감정을 표현해.<br>
+      독자가 스스로 느끼도록 만드는 거야 — 좋은 소설이나 영화처럼!
+    </p>
+    <div class="quote">
+      예시: "슬프다"고 쓰는 대신 → 창밖을 멍하니 바라보는 손, 조금 길어진 침묵, 잘못 잠긴 단추
+    </div>
+  </div>
+
+  <!-- 시점 설정 -->
+  <div class="sec-title">
+    <div class="sec-icon" style="background:var(--water-bg)">👁️</div>
+    <div>
+      <h2 style="color:var(--water)">시점 설정</h2>
+      <p>누구의 눈으로 이야기를 바라볼지 고르는 설정</p>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="feature-group">
+    <div class="feat" id="f-pov">
+      <div class="feat-header" onclick="toggle('f-pov')">
+        <div class="feat-left">
+          <div class="feat-badge" style="background:var(--water-bg)">👁️</div>
+          <div>
+            <div class="feat-title">시점 (POV)</div>
+            <div class="feat-hint">이야기를 바라보는 카메라 위치</div>
+          </div>
+        </div>
+        <div class="feat-arrow">▼</div>
+      </div>
+      <div class="feat-body">
+        <div class="feat-inner">
+          <p style="font-size:0.85rem;color:var(--text2);margin-bottom:4px">소설에서 1인칭, 3인칭 시점 고르는 것처럼 — AI가 어떤 눈으로 장면을 서술할지 결정해!</p>
+          <div class="opt-list">
+            <div class="opt-item">
+              <div class="opt-num c-water">0</div>
+              <div class="opt-content">
+                <div class="opt-label">내 시점 · 1인칭</div>
+                <div class="opt-desc">내가 직접 보고 느끼는 시점. 서술이 "나는~", "내 손이~"로 이어져. 몰입감 최고!</div>
+              </div>
+            </div>
+            <div class="opt-item">
+              <div class="opt-num c-water">1</div>
+              <div class="opt-content">
+                <div class="opt-label">내 시점 · 3인칭</div>
+                <div class="opt-desc">나를 따라가는 3인칭 시점. "그는~", "그녀는~"으로 서술되지만 나를 중심으로 따라가.</div>
+              </div>
+            </div>
+            <div class="opt-item">
+              <div class="opt-num c-mint">2</div>
+              <div class="opt-content">
+                <div class="opt-label">상대 캐릭터 시점 · 1인칭</div>
+                <div class="opt-desc">상대방(AI 캐릭터)이 화자가 돼. 상대가 나를 어떻게 바라보는지 볼 수 있어!</div>
+              </div>
+            </div>
+            <div class="opt-item">
+              <div class="opt-num c-mint">3</div>
+              <div class="opt-content">
+                <div class="opt-label">상대 캐릭터 시점 · 3인칭</div>
+                <div class="opt-desc">상대를 따라가는 3인칭. 2번과 비슷하지만 조금 더 멀리서 바라봐.</div>
+              </div>
+            </div>
+            <div class="opt-item">
+              <div class="opt-num c-gold">4</div>
+              <div class="opt-content">
+                <div class="opt-label">파노라마 시점 (전지적 카메라)</div>
+                <div class="opt-desc">모든 등장인물을 멀리서 관찰하는 시점. 누구의 내면도 직접 서술 안 해 — 군상극, 앙상블 서사에 딱!</div>
+              </div>
+            </div>
+            <div class="opt-item">
+              <div class="opt-num c-lav">5</div>
+              <div class="opt-content">
+                <div class="opt-label">지정 캐릭터 시점 · 1인칭</div>
+                <div class="opt-desc">내가 이름을 지정한 특정 캐릭터의 1인칭 시점. 조연이나 다른 NPC 눈으로 볼 수 있어!</div>
+              </div>
+            </div>
+            <div class="opt-item">
+              <div class="opt-num c-lav">6</div>
+              <div class="opt-content">
+                <div class="opt-label">지정 캐릭터 시점 · 3인칭</div>
+                <div class="opt-desc">5번과 같지만 3인칭 서술.</div>
+              </div>
+            </div>
+          </div>
+          <div class="tip">처음엔 0번(내 1인칭)으로 시작하는 게 몰입감 제일 높아. 상대 심리가 궁금해지면 2번으로 전환해봐!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 내 캐릭터 제어 -->
+  <div class="sec-title">
+    <div class="sec-icon" style="background:#f0eefb">🎮</div>
+    <div>
+      <h2 style="color:var(--lavender)">내 캐릭터 제어</h2>
+      <p>AI가 내 캐릭터의 행동·대사를 얼마나 써줄지</p>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="feature-group">
+    <div class="feat" id="f-imp">
+      <div class="feat-header" onclick="toggle('f-imp')">
+        <div class="feat-left">
+          <div class="feat-badge" style="background:#f0eefb">🕹️</div>
+          <div>
+            <div class="feat-title">내 캐릭터 위임 레벨</div>
+            <div class="feat-hint">내가 직접 조종할지, AI에게 맡길지</div>
+          </div>
+        </div>
+        <div class="feat-arrow">▼</div>
+      </div>
+      <div class="feat-body">
+        <div class="feat-inner">
+          <p style="font-size:0.85rem;color:var(--text2);margin-bottom:4px">내가 직접 타이핑하는 게 귀찮다면 AI에게 맡길 수 있어. 반대로 내 대사를 절대 건드리지 않게 할 수도 있고!</p>
+          <div class="opt-list">
+            <div class="opt-item">
+              <div class="opt-num c-otter">0</div>
+              <div class="opt-content">
+                <div class="opt-label">내 입력만 써줘 (완전 자율)</div>
+                <div class="opt-desc">내가 입력한 것만 반영돼. AI가 내 행동이나 대사를 절대 추가하거나 바꾸지 않아. 직접 플레이하고 싶을 때.</div>
+              </div>
+            </div>
+            <div class="opt-item">
+              <div class="opt-num c-water">1</div>
+              <div class="opt-content">
+                <div class="opt-label">대사는 고정, 행동은 자유</div>
+                <div class="opt-desc">내가 입력한 대사는 그대로 유지하고, 자연스러운 몸짓이나 동작은 AI가 추가해줘. 대사 쓰기 귀찮은 장면에서 편리해!</div>
+              </div>
+            </div>
+            <div class="opt-item">
+              <div class="opt-num c-mint">2</div>
+              <div class="opt-content">
+                <div class="opt-label">AI가 다 써줘 (완전 위임)</div>
+                <div class="opt-desc">AI가 내 캐릭터의 대사·행동 모두 자유롭게 써줘. 소설처럼 읽히고 싶을 때 최고! 이야기 흐름이 가장 자연스러워.</div>
+              </div>
+            </div>
+            <div class="opt-item">
+              <div class="opt-num c-gold">3</div>
+              <div class="opt-content">
+                <div class="opt-label">나는 없어 (순수 관찰)</div>
+                <div class="opt-desc">내 캐릭터가 아예 등장 안 해. AI가 NPC들만 서술. 배경 세계를 구경하거나 극 속 인물들의 움직임만 보고 싶을 때.</div>
+              </div>
+            </div>
+          </div>
+          <div class="tip">롤플레이 초보라면 2번 추천! AI가 이야기를 자연스럽게 이어줘서 훨씬 읽기 좋아.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 내면 묘사 -->
+  <div class="sec-title">
+    <div class="sec-icon" style="background:var(--mint-bg)">💭</div>
+    <div>
+      <h2 style="color:var(--mint)">내면 묘사 수준</h2>
+      <p>캐릭터의 감정·생각을 얼마나 직접 서술할지</p>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="feature-group">
+    <div class="feat" id="f-inner">
+      <div class="feat-header" onclick="toggle('f-inner')">
+        <div class="feat-left">
+          <div class="feat-badge" style="background:var(--mint-bg)">💭</div>
+          <div>
+            <div class="feat-title">감정 서술 방식</div>
+            <div class="feat-hint">"슬프다"고 쓸지, 보여줄지</div>
+          </div>
+        </div>
+        <div class="feat-arrow">▼</div>
+      </div>
+      <div class="feat-body">
+        <div class="feat-inner">
+          <p style="font-size:0.85rem;color:var(--text2);margin-bottom:4px">문학적 깊이와 감정 직접 전달 사이의 밸런스를 조절하는 설정이야!</p>
+          <div class="opt-list">
+            <div class="opt-item">
+              <div class="opt-num c-otter">0</div>
+              <div class="opt-content">
+                <div class="opt-label">신호로만 보여줘 (문학적)</div>
+                <div class="opt-desc">감정을 직접 말하지 않아. 표정, 몸짓, 침묵, 행동으로만 암시해. 독자가 스스로 느끼게 되는 가장 문학적인 방식.</div>
+              </div>
+            </div>
+            <div class="opt-item">
+              <div class="opt-num c-water">1</div>
+              <div class="opt-content">
+                <div class="opt-label">감정이 살짝 새어나와 (중간)</div>
+                <div class="opt-desc">강렬한 감정 순간에만 살짝 내면이 비쳐. 그것도 확실하지 않게 — "뭔가 두려운 것 같았다" 정도의 뉘앙스.</div>
+              </div>
+            </div>
+            <div class="opt-item">
+              <div class="opt-num c-mint">2</div>
+              <div class="opt-content">
+                <div class="opt-label">내면을 직접 서술 (풍부한 감정)</div>
+                <div class="opt-desc">모든 캐릭터의 감정을 직접 묘사해. "그녀는 두려웠다", "뭔가 뜨거운 것이 가슴에서 올라왔다" 식으로 감정선이 풍부해져.</div>
+              </div>
+            </div>
+          </div>
+          <div class="tip">0번이 가장 문학적이고, 2번이 가장 감성 충만해. 로맨스엔 2번, 순문학엔 0번이 잘 맞아!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 장르 -->
+  <div class="sec-title">
+    <div class="sec-icon" style="background:var(--coral-bg)">📚</div>
+    <div>
+      <h2 style="color:var(--coral)">장르 설정</h2>
+      <p>이야기의 분위기와 세계관을 결정하는 설정 · 최대 5개 동시 적용 가능</p>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="feature-group">
+    <div class="feat" id="f-genre">
+      <div class="feat-header" onclick="toggle('f-genre')">
+        <div class="feat-left">
+          <div class="feat-badge" style="background:var(--coral-bg)">🎨</div>
+          <div>
+            <div class="feat-title">장르 선택</div>
+            <div class="feat-hint">여러 개 동시에 쓸 수 있어 (장르1~장르5 슬롯)</div>
+          </div>
+        </div>
+        <div class="feat-arrow">▼</div>
+      </div>
+      <div class="feat-body">
+        <div class="feat-inner">
+          <p style="font-size:0.85rem;color:var(--text2);margin-bottom:2px">각 슬롯에 숫자를 넣으면 그 장르가 활성화돼. 예: 슬롯1=3, 슬롯2=1 → 로코+힐링 동시 적용!</p>
+          <div class="genre-grid">
+            <div class="genre-card g-heal">
+              <div class="g-num">장르 1</div>
+              <div class="g-name">🌿 힐링 · 이야시케이</div>
+              <div class="g-desc">용이 나타나도 차 한잔으로 해결되는 평화로운 세계. 극적인 사건은 일어나지 않아. 느긋하고 따뜻한 일상 이야기.</div>
+            </div>
+            <div class="genre-card g-rpg">
+              <div class="g-num">장르 2</div>
+              <div class="g-name">⚔️ 주니어 RPG · 모험</div>
+              <div class="g-desc">선악이 명확한 경쾌한 모험물. 레벨업, 아이템, 파티 동료! 라이트노벨 스타일의 신나는 판타지.</div>
+            </div>
+            <div class="genre-card g-rom">
+              <div class="g-num">장르 3</div>
+              <div class="g-name">💕 러브코미디</div>
+              <div class="g-desc">두근두근 오해와 화해의 청춘 로맨스. 귀여운 실수, 수줍은 고백, 설레는 순간들. 무거운 드라마는 없어.</div>
+            </div>
+            <div class="genre-card g-har">
+              <div class="g-num">장르 4</div>
+              <div class="g-name">💜 평화로운 하렘</div>
+              <div class="g-desc">질투나 싸움 없이 서로를 응원하는 하렘. 멤버들이 주인공이 행복한 걸 함께 기뻐하는 따뜻한 설정.</div>
+            </div>
+            <div class="genre-card g-adu">
+              <div class="g-num">장르 5</div>
+              <div class="g-name">🔞 성인 · 명시적 묘사</div>
+              <div class="g-desc">성인 전용. 직접적이고 상세한 성적 묘사. 일본 동인지 스타일의 에로틱 판타지.</div>
+            </div>
+            <div class="genre-card g-siz">
+              <div class="g-num">장르 6</div>
+              <div class="g-name">📏 나이·체격 차</div>
+              <div class="g-desc">세대 차이나 신체적 크기 차이를 매력 포인트로. 큰 캐릭터가 작은 캐릭터를 감싸는 보호감·압도감을 강조.</div>
+            </div>
+            <div class="genre-card g-flt">
+              <div class="g-num">장르 7</div>
+              <div class="g-name">🛡️ 네거티브 필터</div>
+              <div class="g-desc">앙스트, 비극, 비합의, M/M 등 어두운 요소를 완전 차단하는 안전망. 편안한 창작 환경 보장.</div>
+            </div>
+            <div class="genre-card g-hor">
+              <div class="g-num">장르 8</div>
+              <div class="g-name">💀 고어 · 공포</div>
+              <div class="g-desc">잔인하고 무서운 서사. 피, 심리적 공포, 코즈믹 호러까지. 인간 존재의 나약함을 강조.</div>
+            </div>
+          </div>
+          <div class="info" style="margin-top:14px">
+            <strong>커스텀 장르</strong>도 있어! 목록에 없는 장르는 직접 태그를 써넣으면 돼. 예: "무협", "사이버펑크", "학원물", "이세계 전이"
+          </div>
+          <div class="tip">장르 7 (네거티브 필터)은 다른 장르랑 같이 쓰면 좋아. 로코+필터 = 순수하고 편안한 러브스토리!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 이야기 방향 -->
+  <div class="sec-title">
+    <div class="sec-icon" style="background:var(--green-bg)">🧭</div>
+    <div>
+      <h2 style="color:var(--green)">이야기 방향 지정</h2>
+      <p>원하는 요소와 싫어하는 요소를 직접 텍스트로 지정</p>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="feature-group">
+    <div class="feat" id="f-dir">
+      <div class="feat-header" onclick="toggle('f-dir')">
+        <div class="feat-left">
+          <div class="feat-badge" style="background:var(--green-bg)">🎯</div>
+          <div>
+            <div class="feat-title">원하는 요소 / 금지 요소</div>
+            <div class="feat-hint">장르보다 더 세밀하게 이야기 분위기 조율</div>
+          </div>
+        </div>
+        <div class="feat-arrow">▼</div>
+      </div>
+      <div class="feat-body">
+        <div class="feat-inner">
+          <div class="opt-list">
+            <div class="opt-item">
+              <div class="opt-num c-green">✓</div>
+              <div class="opt-content">
+                <div class="opt-label">원하는 요소 (적극 반영)</div>
+                <div class="opt-desc">이야기 전반에 녹여줬으면 하는 분위기·트로프를 써넣어. 대화, 캐릭터 행동, 세계관에 자연스럽게 반영돼.<br><span style="color:var(--text3);font-size:0.78rem">예: "연하 연상, 툰데레 히로인, 후배가 적극적"</span></div>
+              </div>
+            </div>
+            <div class="opt-item">
+              <div class="opt-num c-coral">✕</div>
+              <div class="opt-content">
+                <div class="opt-label">금지 요소 (절대 등장 금지)</div>
+                <div class="opt-desc">절대 보고 싶지 않은 요소를 써넣어. 이야기에 절대 등장하지 않아.<br><span style="color:var(--text3);font-size:0.78rem">예: "갑작스러운 비극, 억지 오해, 무기력한 주인공"</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="tip">장르는 큰 틀을 잡고, 이 설정으로 디테일을 조율해봐. 훨씬 내 취향에 맞는 이야기가 나와!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 출력 설정 -->
+  <div class="sec-title">
+    <div class="sec-icon" style="background:var(--gold-bg)">📝</div>
+    <div>
+      <h2 style="color:var(--gold)">출력 설정</h2>
+      <p>응답 길이·문체·전개 속도·언어를 조율하는 설정</p>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="feature-group">
+    <div class="feat" id="f-len">
+      <div class="feat-header" onclick="toggle('f-len')">
+        <div class="feat-left">
+          <div class="feat-badge" style="background:var(--gold-bg)">📏</div>
+          <div>
+            <div class="feat-title">응답 길이</div>
+            <div class="feat-hint">AI가 한 번에 얼마나 길게 써줄지</div>
+          </div>
+        </div>
+        <div class="feat-arrow">▼</div>
+      </div>
+      <div class="feat-body">
+        <div class="feat-inner">
+          <div class="opt-list">
+            <div class="opt-item"><div class="opt-num c-water">1</div><div class="opt-content"><div class="opt-label">짧게 (300~500자)</div><div class="opt-desc">빠른 대화나 간단한 장면 묘사. 속도감 있게 진행하고 싶을 때.</div></div></div>
+            <div class="opt-item"><div class="opt-num c-water">2</div><div class="opt-content"><div class="opt-label">보통 (700~1000자)</div><div class="opt-desc">일반적인 롤플레이에 딱 맞는 길이. 시작 추천!</div></div></div>
+            <div class="opt-item"><div class="opt-num c-mint">3</div><div class="opt-content"><div class="opt-label">길게 (1000~1500자)</div><div class="opt-desc">장면 묘사와 대화가 풍부해져. 몰입감 높은 장면에 좋아.</div></div></div>
+            <div class="opt-item"><div class="opt-num c-mint">4</div><div class="opt-content"><div class="opt-label">더 길게 (1500~2000자)</div><div class="opt-desc">디테일이 풍부한 서술. 중요한 이벤트 장면에 적합.</div></div></div>
+            <div class="opt-item"><div class="opt-num c-gold">5</div><div class="opt-content"><div class="opt-label">매우 길게 (2500~3000자)</div><div class="opt-desc">소설 한 챕터 분량. 깊은 서사를 원할 때.</div></div></div>
+            <div class="opt-item"><div class="opt-num c-gold">6</div><div class="opt-content"><div class="opt-label">초장편 (4500~5000자)</div><div class="opt-desc">전문 소설 수준의 길이. 감동적인 클라이맥스 등에 활용.</div></div></div>
+            <div class="opt-item"><div class="opt-num c-lav">7</div><div class="opt-content"><div class="opt-label">극장편 (9000자+)</div><div class="opt-desc">소설 완전판 분량. 엄청나게 길어져.</div></div></div>
+            <div class="opt-item"><div class="opt-num c-coral">8</div><div class="opt-content"><div class="opt-label">무제한</div><div class="opt-desc">길이 제한 없음. AI가 최고의 챕터를 쓸 때까지 쭉 이어가. 토큰 소모 주의!</div></div></div>
+          </div>
+          <div class="tip">평소엔 2~3번이 딱 좋아. 클라이맥스나 감동 장면만 5~6번으로 올려봐!</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feat" id="f-style">
+      <div class="feat-header" onclick="toggle('f-style')">
+        <div class="feat-left">
+          <div class="feat-badge" style="background:var(--gold-bg)">✍️</div>
+          <div>
+            <div class="feat-title">문체 스타일</div>
+            <div class="feat-hint">AI가 어떤 방식으로 글을 쓸지</div>
+          </div>
+        </div>
+        <div class="feat-arrow">▼</div>
+      </div>
+      <div class="feat-body">
+        <div class="feat-inner">
+          <div class="opt-list">
+            <div class="opt-item"><div class="opt-num c-water">1</div><div class="opt-content"><div class="opt-label">클래식 문학체</div><div class="opt-desc">균형 잡힌 현실적인 묘사. 모든 감각을 사용해 장면을 생생하게 그려내. 무게감 있는 서사에 잘 맞아.</div></div></div>
+            <div class="opt-item"><div class="opt-num c-water">2</div><div class="opt-content"><div class="opt-label">감성 소설체</div><div class="opt-desc">감정에 집중하는 서정적인 문체. 첫사랑, 이별, 내면의 갈등 같은 감정선을 섬세하게 다뤄. 줄임표와 침묵을 잘 활용해.</div></div></div>
+            <div class="opt-item"><div class="opt-num c-mint">3</div><div class="opt-content"><div class="opt-label">경쾌한 대화 중심체</div><div class="opt-desc">빠르고 활기차. 대화가 이야기를 이끌어가. ★♥ 같은 특수문자도 써주고, 각 캐릭터의 말투가 확실히 달라져. 라노벨·코미디에 딱!</div></div></div>
+            <div class="opt-item"><div class="opt-num c-gold">4</div><div class="opt-content"><div class="opt-label">순문학체</div><div class="opt-desc">절제되고 고요한 문장. 헤밍웨이, 한강 같은 스타일. 꾸밈없는 문장이 오히려 더 깊은 울림을 줘.</div></div></div>
+            <div class="opt-item"><div class="opt-num c-lav">5</div><div class="opt-content"><div class="opt-label">역사극 · 시대물체</div><div class="opt-desc">고풍스럽고 우아한 문체. 사극 톤의 대사(하오체, 하게체)를 써줘. 시대물·궁중물·무협 분위기에 최적화.</div></div></div>
+          </div>
+          <div class="tip">장르랑 문체를 맞춰봐! 러브코미디 + 3번, 역사물 + 5번, 순수 감성 소설 + 2번이 잘 어울려!</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feat" id="f-speed">
+      <div class="feat-header" onclick="toggle('f-speed')">
+        <div class="feat-left">
+          <div class="feat-badge" style="background:var(--gold-bg)">⚡</div>
+          <div>
+            <div class="feat-title">이야기 전개 속도</div>
+            <div class="feat-hint">얼마나 빠르게 플롯을 진행할지</div>
+          </div>
+        </div>
+        <div class="feat-arrow">▼</div>
+      </div>
+      <div class="feat-body">
+        <div class="feat-inner">
+          <div class="opt-list">
+            <div class="opt-item"><div class="opt-num c-water">1</div><div class="opt-content"><div class="opt-label">보통 (에피소드 10~15개 = 아크 1개)</div><div class="opt-desc">적절한 속도로 이야기가 진행돼. 일반적으로 가장 많이 쓰는 설정.</div></div></div>
+            <div class="opt-item"><div class="opt-num c-coral">2</div><div class="opt-content"><div class="opt-label">빠름 (에피소드 10~15개 = 여러 아크)</div><div class="opt-desc">숨가쁘게 빠른 전개. 이야기를 빨리 진행시키고 싶을 때.</div></div></div>
+            <div class="opt-item"><div class="opt-num c-mint">3</div><div class="opt-content"><div class="opt-label">느림 (아크 하나에 20~30 에피소드)</div><div class="opt-desc">여유롭고 느긋한 전개. 세계관과 캐릭터를 충분히 쌓아가며 즐기고 싶을 때.</div></div></div>
+            <div class="opt-item"><div class="opt-num c-gold">4</div><div class="opt-content"><div class="opt-label">장면 집중 (사건 금지, 현재에 머물기)</div><div class="opt-desc">새 캐릭터나 돌발 사건 없음. 지금 이 장면에만 깊이 머물러. 분위기 있는 대화, 감정적인 순간을 길게 늘리고 싶을 때 최고!</div></div></div>
+          </div>
+          <div class="tip">4번은 감동적인 고백 장면이나 진한 분위기 장면에서 끊기지 않고 쭉 이어가고 싶을 때 써봐!</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feat" id="f-lang">
+      <div class="feat-header" onclick="toggle('f-lang')">
+        <div class="feat-left">
+          <div class="feat-badge" style="background:var(--gold-bg)">🌐</div>
+          <div>
+            <div class="feat-title">언어 설정</div>
+            <div class="feat-hint">AI가 어떤 언어로 응답할지</div>
+          </div>
+        </div>
+        <div class="feat-arrow">▼</div>
+      </div>
+      <div class="feat-body">
+        <div class="feat-inner">
+          <div class="opt-list">
+            <div class="opt-item"><div class="opt-num c-water">0</div><div class="opt-content"><div class="opt-label">영어 전용</div><div class="opt-desc">모든 서술과 대화가 영어로. 영어 창작 연습이나 외국 설정 롤플레이에 좋아.</div></div></div>
+            <div class="opt-item"><div class="opt-num c-gold">1</div><div class="opt-content"><div class="opt-label">한영 병기</div><div class="opt-desc">서술은 한국어, 대화는 <code>"I can't believe it. (믿을 수가 없어.)"</code> 형식으로 써줘. 언어 학습이나 몰입감 있는 이중 언어 창작에 딱!</div></div></div>
+            <div class="opt-item"><div class="opt-num c-mint">2</div><div class="opt-content"><div class="opt-label">한국어 전용</div><div class="opt-desc">모든 서술과 대화를 자연스러운 한국어로. 캐릭터 국적에 상관없이 한국어로 써줘.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 특수 기능 -->
+  <div class="sec-title">
+    <div class="sec-icon" style="background:#f0eefb">✨</div>
+    <div>
+      <h2 style="color:var(--lavender)">특수 기능</h2>
+      <p>수달만의 특별한 도구들</p>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="special-grid">
+    <div class="sp-card">
+      <span class="sp-icon">🦦</span>
+      <h3>수달 모드 (OOC)</h3>
+      <p>
+        <strong>끔 (0)</strong>: AI가 투명한 내레이터로 이야기에만 집중해.<br><br>
+        <strong>켬 (1)</strong>: 수달 캐릭터가 나타나! 장난스럽고 다정하게 설정 도움을 줘. "대장~" 하고 반겨줘. 설정 바꾸거나 조언 구할 때 써봐.
+      </p>
+      <span class="sp-tag" style="background:var(--lav-bg);border-color:#c0b4f0;color:var(--lavender)">이야기 외부에서 대화</span>
+    </div>
+    <div class="sp-card">
+      <span class="sp-icon">💡</span>
+      <h3>수달 팁</h3>
+      <p>
+        <strong>켬 (1)</strong>: 매 응답 끝에 수달이 작은 팁을 달아줘. 서술 방향, 설정 조언, 재미있는 아이디어 등을 친근한 말투로 알려줘!
+      </p>
+      <span class="sp-tag" style="background:var(--gold-bg);border-color:#f0d080;color:var(--gold)">🦦 수달의 tip</span>
+    </div>
+    <div class="sp-card">
+      <span class="sp-icon">🎯</span>
+      <h3>선택지 UI</h3>
+      <p>
+        <strong>켬 (1)</strong>: 매 응답 후 다음 행동 선택지 6개를 제안해줘. 직접 행동 2개, 장면 전환 2개, 다른 캐릭터 시점 2개 — 뭘 해야 할지 막힐 때 최고!
+      </p>
+      <span class="sp-tag" style="background:var(--mint-bg);border-color:#a0ddd4;color:var(--mint)">6가지 선택지 제안</span>
+    </div>
+    <div class="sp-card">
+      <span class="sp-icon">🎬</span>
+      <h3>캐릭터 주권</h3>
+      <p>
+        모든 캐릭터는 자기 성격과 목표대로 <strong>자율적으로 행동</strong>해. 나를 위해 억지로 맞춰주지 않아. 진짜 사람처럼 판단하고 반응해서 이야기가 살아있게 느껴져.
+      </p>
+      <span class="sp-tag" style="background:#fff0ee;border-color:#f0a090;color:var(--coral)">수달 원칙의 핵심</span>
+    </div>
+  </div>
+
+  <!-- 시작하는 법 -->
+  <div class="sec-title">
+    <div class="sec-icon" style="background:var(--mint-bg)">🚀</div>
+    <div>
+      <h2 style="color:var(--mint)">처음 시작하는 법</h2>
+      <p>이대로만 따라해도 바로 써!</p>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div style="background:white;border:1.5px solid var(--border);border-radius:20px;padding:28px 28px 12px;box-shadow:var(--shadow)">
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">프리셋을 AI 채팅툴에 붙여넣기</div>
+          <div class="step-desc">SillyTavern 등 AI 프론트엔드의 시스템 프롬프트 / 월드인포에 수달 프리셋 전체를 붙여넣어.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">추천 시작값으로 설정</div>
+          <div class="step-desc">
+            시점: <code>내 1인칭</code> · 내 캐릭터: <code>AI가 다 써줘</code> · 감정: <code>살짝 새어나옴</code><br>
+            장르: <code>러브코미디</code> · 응답길이: <code>보통</code> · 문체: <code>경쾌 대화체</code> · 언어: <code>한국어</code>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">수달 모드 켜고 도움 받기</div>
+          <div class="step-desc">수달 모드를 <code>켬(1)</code>으로 바꾸면 수달이 나타나. "어떤 이야기 하고 싶어? 대장~!" 하고 같이 세계관을 잡아줄 거야.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">수달 모드 끄고 이야기 시작</div>
+          <div class="step-desc">설정이 끝나면 수달 모드를 <code>끔(0)</code>으로. 수달이 배경으로 물러나고 투명한 내레이터로 이야기가 시작돼.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-title">즐기면서 취향껏 조율</div>
+          <div class="step-desc">이야기 도중에도 설정을 바꿀 수 있어! 너무 빠르다 싶으면 전개 속도를 느리게, 감동적인 장면에서 감정 묘사를 풍부하게로 올려봐. 네 이야기니까 맘대로 해! 🌊</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    <span class="f-otter">🦦</span>
+    <strong>수달 프리셋</strong>과 함께라면<br>
+    처음엔 복잡해 보여도 괜찮아 — 천천히 하나씩 바꿔가면 돼!<br>
+    수달은 항상 여기서 대장을 기다리고 있을게 ~ 🐟
+  </div>
+
+</div>
+
+<script>
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+  const body = el.querySelector('.feat-body');
+  body.classList.toggle('open');
+}
+// Open first one by default
+toggle('f-pov');
+</script>
+</body>
+</html>
